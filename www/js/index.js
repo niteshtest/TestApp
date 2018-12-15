@@ -34,6 +34,23 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        cordova.plugins.notification.local.hasPermission(function (granted) { 
+
+            alert("hasPermission" + granted);
+  
+  
+            if (granted = true) { console.log("Application has Permission for notification"); } 
+            else { console.log("Application don't has Permission for notification"); }
+            });
+          
+            cordova.plugins.notification.local.schedule({
+                id: 10,
+                title: "Meeting in 15 minutes!",
+                text: "Jour fixe Produktionsbesprechung",
+                at: tomorrow_at_8_45_am,
+                data: { meetingId:"#123FG8" }
+            });
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -52,27 +69,16 @@ var app = {
         console.log('button clicked ');
         alert("button clicked new");
 
-        console.log("checking for notification");
 
-         cordova.plugins.notification.local.hasPermission(function (granted) { 
-
-          alert("hasPermission" + granted);
-
-
-          if (granted = true) { console.log("Application has Permission for notification"); } 
-          else { console.log("Application don't has Permission for notification"); }
-          });
-        
-          console.log("checking for notification done");
-
+      
 
         
-      /*  cordova.plugins.notification.local.schedule({
+       cordova.plugins.notification.local.schedule({
           title: 'Design team meeting',
           text: '3:00 - 4:00 PM',
           trigger: { at: new Date(2018, 12, 27, 19, 18) }
       });
-    */
+    
       console.log("scheduling notification done");
 
       
