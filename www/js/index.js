@@ -45,8 +45,38 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-        console.log("inside index.js");
-        
 
+    },
+
+    msg: function(){
+        console.log('button clicked ');
+        alert("button clicked new");
+
+        console.log("checking for notification");
+
+         cordova.plugins.notification.local.hasPermission(function (granted) { 
+
+          alert("hasPermission" + granted);
+
+
+          if (granted = true) { console.log("Application has Permission for notification"); } 
+          else { console.log("Application don't has Permission for notification"); }
+          });
+        
+          console.log("checking for notification done");
+
+
+        
+      /*  cordova.plugins.notification.local.schedule({
+          title: 'Design team meeting',
+          text: '3:00 - 4:00 PM',
+          trigger: { at: new Date(2018, 12, 27, 19, 18) }
+      });
+    */
+      console.log("scheduling notification done");
+
+      
     }
+
 };
+
